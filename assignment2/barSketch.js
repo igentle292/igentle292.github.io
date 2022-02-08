@@ -1,4 +1,9 @@
 let data;
+// let url = 'https://gist.githubusercontent.com/igentle292/4b6d8203410d441737d0f2e735893405/raw/6ccc6850b8d5918008b8a037df2043b6ce74cfe7/revamped-stop-and-search-data.csv';
+// function preload(){
+//     data = loadTable(url, 'csv', 'header');
+// }
+
 function preload(){
     data = loadTable('revamped-stop-and-search-data.csv', 'csv', 'header');
 }
@@ -26,7 +31,6 @@ function setup() {
   
   for(var i=0; i<data.getRowCount(); i++){
     var x = (250 * i) + 300; 
-    console.log(data.getNum(i, "Number of stop and searches"));
     var y = (data.getNum(i, "Number of stop and searches") / 600000) * (height - 200);
     var ethnicity = data.getString(i,"Ethnicity(Number)");
     if(ethnicity == 'All'){
