@@ -18,7 +18,7 @@ function main() {
     let xScale = d3.scaleTime().range([0, width]);
     let yScale = d3.scaleTime().range([0, height]);
 
-    d3.csv("SM64 120 Star Speedrun Data as of March 16, 2022.csv", function(d){
+    d3.csv("SM64 120 Star Speedrun Data.csv", function(d){
         d.Date = parseDate(d.Date);
         d.Time = parseTime(d.Time);
         return d;
