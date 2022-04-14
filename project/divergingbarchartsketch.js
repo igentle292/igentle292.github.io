@@ -22,7 +22,7 @@ function main(){
     let negativeyScale = d3.scaleLinear().range([425, 225]);
     let colorScale = d3.scaleLinear().range(["red","white", "green"]);
 
-    d3.csv("speedrun player count(active=last 30 days) - Sheet1.csv", converter).then(data => {
+    d3.csv("speedrun_player_count.csv", converter).then(data => {
         container_g.append("text")
             .attr("y", 50)
             .attr("x", -50)
