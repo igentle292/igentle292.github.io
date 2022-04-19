@@ -1,5 +1,6 @@
 
 function main() {
+    //Data is as of March 16, 2022
     let margin = 150;
     let width = 800 - margin;
     let height = 650 - margin;
@@ -18,7 +19,7 @@ function main() {
     let xScale = d3.scaleTime().range([0, width]);
     let yScale = d3.scaleTime().range([0, height]);
 
-    d3.csv("SM64_120_Star_Speedrun_Time.csv", function(d){
+    d3.csv("SM64_120_Star_Speedrun_Time2.csv", function(d){
         d.Date = parseDate(d.Date);
         d.Time = parseTime(d.Time);
         return d;
@@ -33,11 +34,9 @@ function main() {
 
             xScale.domain(d3.extent(data, function(d){return d.Date}));
 
-            console.log(parseTime("0:00:00"));
             const times = data.map(function(d){
                 return d.Time;
             })
-            console.log(times);
 
             yScale.domain([d3.max(times), parseTime("1:30:00")]);
 

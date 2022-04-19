@@ -1,57 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-  
-</head>
-<body>
- 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Speed of Speedrunning</title>
-    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/main.css"/>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-path@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-shape@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-hierarchy@3"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-color@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3"></script>
 </head>
 <body class="is-preload">
-
-<!-- Wrapper -->
-<div id="wrapper">
-    <!-- Main -->
-    <div id="main">
-        <div class="inner">
-            <!-- Banner -->
-            <section id="banner">
-                <div class="content">
-                     <h1>Speed of Speedrunning</h1>
-  <h3>By Isaiah Gentle</h3>
-  <p>An exploration of the players and progression of Speedrunning in Super Mario 64</p>
-  <p><a href="../index.html">Go back</p>
-                </div>
-            </section>
-
-            <!-- Section -->
-            <section>
-                <div>
-                    <h3>Visualizations<br></h3>
-                    <ul>
-                        <li><a href="./Alpha Release.pdf">Overview</a></li>
-                        <li><a href="./lineChart.html">Scatter Plot!</a></li>
-                        <li><a href="./divergingbarchart.html">Diverging Bar Chart!</a></li>
-                        <li><a href="./viz (1).jpg">Tree Map!</a></li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-
-
-    </div>
+<div class="content">
+    <header>
+        <h1>Speed of Speedrunning</h1>
+        <h3>By Isaiah Gentle</h3>
+        <p>An exploration of the players and progression of Speedrunning in Super Mario 64</p>
+    </header>
+</div>
+<div><h3>Scatterplot</h3>
+    <script src="linechartsketch.js"></script>
+</div>
+<div><h3>Bar Chart</h3>
+    <script src="divergingbarchartsketch.js"></script>
+</div>
+<div><h3>Tree Map</h3>
+    <script src="treeMapSketch.js"></script>
 </div>
 
-<!-- Scripts -->
+<!-- Style Scripts -->
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/browser.min.js"></script>
 <script src="../assets/js/breakpoints.min.js"></script>
