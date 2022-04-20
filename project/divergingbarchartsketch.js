@@ -7,11 +7,11 @@ function converter(d){
 function main(){
     //Active Player means active in the last 30 Days
     let margin = 100;
-    let width = 700 - margin;
+    let width = 800 - margin - 100;
     let height = 650 - margin;
 
     let svg = d3.select("body").append("svg")
-        .attr("width", width + margin)
+        .attr("width", width + margin + 100)
         .attr("height", height + margin)
         // .style("background-color", "lightgray");
 
@@ -26,7 +26,7 @@ function main(){
     d3.csv("active_player_count.csv", converter).then(data => {
         container_g.append("text")
             .attr("y", 50)
-            .attr("x", -50)
+            .attr("x", 0)
             .attr("stroke", "black")
             .attr("font-family", "sans-serif")
             .text("Change in Active Super Mario 64 Speedrunners, 2016-2022");
@@ -76,12 +76,33 @@ function main(){
                     return positiveyScale(d.Change_in_Players)+margin;
                 }
                 return negativeyScale(0) + margin;
+            }).on("mouseover", function(elem, d){
+            let y;
+            let num = d.Change_in_Players;
+            if(num > 0){
+                y = (positiveyScale(d.Change_in_Players)+margin) + ((225 - positiveyScale(d.Change_in_Players))/2);
+            } else {
+                y = (negativeyScale(0) + margin) + ((negativeyScale(d.Change_in_Players) - 225)/2);
+            }
+            svg.append("text")
+                .attr("id", "tooltip")
+                .attr("x", xScale(d.Date) + 125)
+                .attr("y", y)
+                .attr("text-anchor", "middle")
+                .attr("font-family", "sans-serif")
+                .attr("font-size", "15px")
+                .attr("font-weight", "bold")
+                .attr("fill", "black")
+                .text("Current Active Players: " + d.Active_Players);
+        })
+            .on("mouseout", function() {
+                d3.select("#tooltip").remove();
             });
 
-        let legend = d3.legendColor().scale(colorScale).shape("rect").title("Color Legend");
+        let legend = d3.legendColor().scale(colorScale).shape("rect").title("Color Legend").ascending(true);
 
         container_g.append("g")
-            .attr("transform", "translate(500,100)")
+            .attr("transform", "translate(600,100)")
             .attr("stroke", "black")
             .attr("font-family", "sans-serif")
             .call(legend);

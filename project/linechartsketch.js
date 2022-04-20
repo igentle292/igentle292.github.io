@@ -1,9 +1,9 @@
 
 function main() {
     //Data is as of March 16, 2022
-    let margin = 150;
+    let margin = 200;
     let width = 800 - margin;
-    let height = 650 - margin;
+    let height = 700 - margin;
 
     let svg = d3.select("body").append("svg")
         .attr("width", width + margin)
@@ -27,12 +27,13 @@ function main() {
         .then(data => {
             container_g.append("text")
                 .attr("y", 50)
-                .attr("x", 250)
+                .attr("x", 0)
                 .attr("stroke", "black")
                 .attr("font-family", "sans-serif")
                 .text("WR Time Progression");
 
-            xScale.domain(d3.extent(data, function(d){return d.Date}));
+            xScale.domain([d3.min(data.map(function(d){return d.Date})), new Date(2022,5,0)]);
+
 
             const times = data.map(function(d){
                 return d.Time;
@@ -40,9 +41,9 @@ function main() {
 
             yScale.domain([d3.max(times), parseTime("1:30:00")]);
 
-            let line = d3.line();
-            const newData = data.map(function(d, i){  //formatting the data so i can use d3.line()
-                return [xScale(d.Date), yScale(times[i])];
+            const timeRegex = /[0-9]{2}:[0-9]{2}:[0-9]{2}/;
+            const newData = data.map(function(d, i){
+                return {x:xScale(d.Date), y:yScale(times[i]), name:d.Username, time:timeRegex.exec(times[i])[0]};
             });
 
             container_g.append("g")
@@ -51,23 +52,42 @@ function main() {
                 .data(newData)
                 .enter()
                 .append("circle")
+                .attr("id", function(d){
+                    return d.name;
+                })
                 .style("cx", function(d){
-                    return d[0];
+                    return d.x;
                 })
                 .style("cy", function(d){
-                    return d[1];
+                    return d.y;
                 })
                 .style("r", 4)
                 .style("fill", "green")
-                .style("stroke", "green");
+                .style("stroke", "black")
+                .on("mouseover", function(elem, d){
+                    svg.append("text")
+                        .attr("id", "tooltip")
+                        .attr("x", d.x + 110)
+                        .attr("y", d.y + 110)
+                        .attr("text-anchor", "middle")
+                        .attr("font-family", "sans-serif")
+                        .attr("font-size", "15px")
+                        .attr("font-weight", "bold")
+                        .attr("fill", "black")
+                        .text(d.name + ": " + d.time);
+                    container_g.select("#" + d.name).raise();
+                })
+                .on("mouseout", function() {
+                    d3.select("#tooltip").remove();
+                });
 
             //Code from lecture
             container_g.append("g")
-                .attr("transform", "translate(0, 550)")
+                .attr("transform", "translate(0, 600)")
                 .call(d3.axisBottom(xScale))
                 .append("text")
                 .attr("y", 45)
-                .attr("x", 500)
+                .attr("x", 300)
                 .attr("stroke", "black")
                 .attr("fill", "black")
                 .attr("font-size", 14)

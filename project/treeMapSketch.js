@@ -17,10 +17,10 @@ function main() {
         .then(data => {
             svg.append("text")
                 .attr("y", 50)
-                .attr("x", 50)
+                .attr("x", 100)
                 .attr("stroke", "black")
                 .attr("font-family", "sans-serif")
-                .text("Countries of Origin for Super Mario 64 Speedrunners");
+                .text("Countries of Origin for Top 100 Super Mario 64 Speedrunners");
 
             let rootNode = d3.hierarchy(data).sum(function(d){
                 return d.value;
