@@ -108,7 +108,7 @@ function main() {
                 .attr("stroke", "black")
                 .attr("fill", "black")
                 .attr("font-size", 14)
-                .text("Time");
+                .text("Time(H:MM:SS");
         })
 }
 
