@@ -3,7 +3,7 @@ function main() {
     let width = 1000 - margin;
     let height = 600 - margin;
 
-    let svg = d3.select("body").append("svg")
+    let svg = d3.select("#tree").append("svg")
         .attr("width", width + margin)
         .attr("height", height + margin);
 

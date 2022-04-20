@@ -10,7 +10,7 @@ function main(){
     let width = 800 - margin - 100;
     let height = 650 - margin;
 
-    let svg = d3.select("body").append("svg")
+    let svg = d3.select("#bar").append("svg")
         .attr("width", width + margin + 100)
         .attr("height", height + margin)
         // .style("background-color", "lightgray");

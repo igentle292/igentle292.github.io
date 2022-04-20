@@ -5,7 +5,7 @@ function main() {
     let width = 800 - margin;
     let height = 700 - margin;
 
-    let svg = d3.select("body").append("svg")
+    let svg = d3.select("#scatter").append("svg")
         .attr("width", width + margin)
         .attr("height", height + margin);
 
