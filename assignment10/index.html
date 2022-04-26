@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Isaiah Gentle Assignment 10</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-geo@3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+            <!-- Banner -->
+            <section id="banner">
+                <div class="content">
+                    <header>
+                        <h1>Hi, I’m Isaiah Gentle</h1>
+                        <p>Assignment 10: Black Hat, White Hat</p>
+                        <a href="../index.html">Go back</p>
+                    </header>
+                </div>
+            </section>
+
+            <!-- Section -->
+            <section>
+                <div style="width: 100%;">
+                    <h3>Visualizations<br></h3>
+                    <div style="width: 50%; float: left;"  id="black">
+                        <script src="blackHat.js"></script>
+                        <p>Reasons this may be misleading:</p>
+                        <ul>
+                            <li>A rainbow color scale is confusing</li>
+                            <li>The scale is hard to understand</li>
+                            <li>Doesn't have a legend or title</li>
+                        </ul>
+                    </div>
+                    <div style="width: 50%; float: left;" id="white">
+                        <script src="whiteHat.js"></script>
+                        <p>Reasons this is better:</p>
+                        <ul>
+                            <li>A monochromatic color scale makes it easier to tell differences</li>
+                            <li>The scale works with the minimum and maximum</li>
+                            <li>Added a meaningful legend with a title</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                <h3>Itemized List of changes</h3>
+                <ul>
+                    <li>Changed colors for scale</li>
+                    <li>Changed thresholds for scale</li>
+                    <li>Added a legend with a title</li>
+                </ul>
+            </div>
+            </section>
+        </div>
+
+
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/browser.min.js"></script>
+<script src="../assets/js/breakpoints.min.js"></script>
+<script src="../assets/js/util.js"></script>
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>
