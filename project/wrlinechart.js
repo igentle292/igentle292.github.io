@@ -84,6 +84,9 @@ function main(){
             .data(data)
             .enter()
             .append("circle")
+            .attr("class", function(d){
+                return d.Name;
+            })
             .style("cx", function(d){
                 return xScale(d.Date);
             })
@@ -94,7 +97,7 @@ function main(){
             .style("fill", "lightgrey")
             .style("stroke", "green")
             .on("mouseover", function(elem, d){
-                d3.select(this)
+                d3.selectAll("." + d.Name)
                     .style("fill", "blue")
                     .style("stroke", "black");
 
@@ -110,7 +113,7 @@ function main(){
                     .text(d3.timeFormat("%b %e %Y")(d.Date) + ": " + d.Name + " " + d3.timeFormat("%H:%M:%S")(d.Time));
             })
             .on("mouseout", function() {
-                d3.select(this)
+                d3.selectAll("." + d.Name)
                     .style("fill", "lightgrey")
                     .style("stroke", "green");
                 d3.select("#tooltip").remove();

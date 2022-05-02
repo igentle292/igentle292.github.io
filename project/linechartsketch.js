@@ -67,7 +67,7 @@ function main() {
                     svg.append("text")
                         .attr("id", "tooltip")
                         .attr("x", d.x + 110)
-                        .attr("y", d.y + 110)
+                        .attr("y", d.y + 125)
                         .attr("text-anchor", "middle")
                         .attr("font-family", "sans-serif")
                         .attr("font-size", "15px")
