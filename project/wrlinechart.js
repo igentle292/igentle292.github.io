@@ -112,7 +112,7 @@ function main(){
                     .attr("fill", "black")
                     .text(d3.timeFormat("%b %e %Y")(d.Date) + ": " + d.Name + " " + d3.timeFormat("%H:%M:%S")(d.Time));
             })
-            .on("mouseout", function() {
+            .on("mouseout", function(elem, d) {
                 d3.selectAll("." + d.Name)
                     .style("fill", "lightgrey")
                     .style("stroke", "green");
