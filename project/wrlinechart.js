@@ -39,33 +39,6 @@ function main(){
             return [xScale(d.Date), yScale(d.Time)];
         });
 
-        let line = d3.line();
-
-        container_g.append("g")
-            .attr("transform", "translate(20, 100)")
-            .append("path")
-            .attr("d", line(newData))
-            .attr("stroke", "green")
-            .attr("stroke-width", 2)
-            .attr("fill-opacity", 0);
-
-        container_g.append("g")
-            .attr("transform", "translate(20, 100)")
-            .selectAll("circle")
-            .data(newData)
-            .enter()
-            .append("circle")
-            .style("cx", function(d){
-                return d[0];
-            })
-            .style("cy", function(d){
-                return d[1];
-            })
-            .style("r", 4)
-            .style("fill", "lightgrey")
-            .style("stroke", "green");
-
-
         //Code from lecture
         container_g.append("g")
             .attr("transform", "translate(0, 550)")
@@ -94,6 +67,55 @@ function main(){
             .attr("fill", "black")
             .attr("font-size", 14)
             .text("Time taken to complete(H:MM:SS)");
+
+        let line = d3.line();
+
+        container_g.append("g")
+            .attr("transform", "translate(20, 100)")
+            .append("path")
+            .attr("d", line(newData))
+            .attr("stroke", "green")
+            .attr("stroke-width", 2)
+            .attr("fill-opacity", 0);
+
+        container_g.append("g")
+            .attr("transform", "translate(20, 100)")
+            .selectAll("circle")
+            .data(newData)
+            .enter()
+            .append("circle")
+            .style("cx", function(d){
+                return d[0];
+            })
+            .style("cy", function(d){
+                return d[1];
+            })
+            .style("r", 4)
+            .style("fill", "lightgrey")
+            .style("stroke", "green")
+            .on("mouseover", function(elem, d){
+                console.log(d);
+                d3.select(this)
+                    .style("fill", "blue")
+                    .style("stroke", "black");
+
+                container_g.append("text")
+                    .attr("id", "tooltip")
+                    .attr("x", 10 + xScale(d.Date))
+                    .attr("y", 75 + yScale(d.Time))
+                    .attr("text-anchor", "middle")
+                    .attr("font-family", "sans-serif")
+                    .attr("font-size", "15px")
+                    .attr("font-weight", "bold")
+                    .attr("fill", "black")
+                    .text(d3.timeFormat("%b %e %Y")(d.Date) + ": " + d.Name + " " + d3.timeFormat("%H:%M:%S")(d.Time));
+            })
+            .on("mouseout", function() {
+                d3.select(this)
+                    .style("fill", "lightgrey")
+                    .style("stroke", "green");
+                d3.select("#tooltip").remove();
+            });
     })
 }
 

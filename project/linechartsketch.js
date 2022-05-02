@@ -41,9 +41,8 @@ function main() {
 
             yScale.domain([d3.max(times), parseTime("1:30:00")]);
 
-            const timeRegex = /[0-9]{2}:[0-9]{2}:[0-9]{2}/;
             const newData = data.map(function(d, i){
-                return {x:xScale(d.Date), y:yScale(times[i]), name:d.Username, time:timeRegex.exec(times[i])[0]};
+                return {x:xScale(d.Date), y:yScale(times[i]), name:d.Username, time:d3.timeFormat("%H:%M:%S")(times[i])};
             });
 
             container_g.append("g")
@@ -75,7 +74,9 @@ function main() {
                         .attr("font-weight", "bold")
                         .attr("fill", "black")
                         .text(d.name + ": " + d.time);
-                    container_g.select("#" + d.name).raise();
+                    d3.select(this)
+                        .style("fill", "blue")
+                        .raise();
                 })
                 .on("mouseout", function() {
                     d3.select("#tooltip").remove();
