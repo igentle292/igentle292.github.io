@@ -80,6 +80,8 @@ function main() {
                 })
                 .on("mouseout", function() {
                     d3.select("#tooltip").remove();
+                    d3.select(this)
+                        .style("fill", "green");
                 });
 
             //Code from lecture

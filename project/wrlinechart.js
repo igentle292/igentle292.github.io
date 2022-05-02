@@ -81,20 +81,19 @@ function main(){
         container_g.append("g")
             .attr("transform", "translate(20, 100)")
             .selectAll("circle")
-            .data(newData)
+            .data(data)
             .enter()
             .append("circle")
             .style("cx", function(d){
-                return d[0];
+                return xScale(d.Date);
             })
             .style("cy", function(d){
-                return d[1];
+                return yScale(d.Time);
             })
             .style("r", 4)
             .style("fill", "lightgrey")
             .style("stroke", "green")
             .on("mouseover", function(elem, d){
-                console.log(d);
                 d3.select(this)
                     .style("fill", "blue")
                     .style("stroke", "black");
