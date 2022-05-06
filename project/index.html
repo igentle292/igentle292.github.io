@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Speed of Speedrunning</title>
-    <link rel="stylesheet" href="../assets/css/main.css"/>
+    <link rel="stylesheet" href="bulma.min.css">
+    <!-- https://bulmathemes.com/theme/bulma-pro/ -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-path@3"></script>
@@ -15,46 +16,54 @@
     <script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-time-format@4"></script>
 </head>
-    <body class="is-preload">
-        <!-- Wrapper -->
-        <div id="wrapper">
-            <!-- Main -->
-            <div id="main">
-                <div class="inner">
-                    <div class="content">
-                        <header>
-                            <h1>Speed of Speedrunning</h1>
-                            <h3>By Isaiah Gentle</h3>
-                            <p>An exploration of the players and progression of Speedrunning in Super Mario 64</p>
-                            <p><a href="../index.html">Go back</a></p>
-                        </header>
-                    </div>
-                    <div id="scatter">
-                        <h3>Scatterplot</h3>
-                        <script src="linechartsketch.js"></script>
-                    </div>
-                    <div id="line">
-                        <h3>Line Chart</h3>
-                        <script src="wrlinechart.js"></script>
-                    </div>
-                    <div id="bar">
-                        <h3>Bar Chart</h3>
-                        <script src="divergingbarchartsketch.js"></script>
-                    </div>
-                    <div id="tree">
-                        <h3>Tree Map</h3>
-                        <script src="treeMapSketch.js"></script>
-                    </div>
-                </div>
+<body>
+<div>
+    <div>
+    <nav class="navbar is-primary is-fixed-top">
+        <div class="navbar-brand">
+            <div data-target="navbarExampleTransparentExample" class="navbar-burger burger"><span></span> <span></span>
+                <span></span></div>
+        </div>
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+            <div class="navbar-start">
+                <span><a href="../index.html">Go back </a></span></div>
+            <div class="navbar-end"></div>
+        </div>
+    </nav>
+    <section class="hero is-primary is-medium">
+        <div class="hero-body">
+            <div class="container has-text-centered"><br>
+                <h1 class="title is-1">
+                    Speed of Speedrunning
+                </h1>
+                <h2 class="subtitle is-4">
+                    By Isaiah Gentle
+                </h2> <br>
+                <h4 class="subtitle is-6">
+                    An exploration of the players and progression of Speedrunning in Super Mario 64
+                </h4>
             </div>
         </div>
-
-        <!-- Style Scripts -->
-        <script src="../assets/js/jquery.min.js"></script>
-        <script src="../assets/js/browser.min.js"></script>
-        <script src="../assets/js/breakpoints.min.js"></script>
-        <script src="../assets/js/util.js"></script>
-        <script src="../assets/js/main.js"></script>
-
-    </body>
+    </section>
+    </div>
+    <section class="section">
+        <div id="scatter">
+            <h3>Scatterplot</h3>
+            <script src="linechartsketch.js"></script>
+        </div>
+        <div id="line">
+            <h3>Line Chart</h3>
+            <script src="wrlinechart.js"></script>
+        </div>
+        <div id="bar">
+            <h3>Bar Chart</h3>
+            <script src="divergingbarchartsketch.js"></script>
+        </div>
+        <div id="tree">
+            <h3>Tree Map</h3>
+            <script src="treeMapSketch.js"></script>
+        </div>
+    </section>
+</div>
+</body>
 </html>
