@@ -61,7 +61,7 @@ function main() {
                     return d.y;
                 })
                 .style("r", 4)
-                .style("fill", "green")
+                .style("fill", "green") //create a color scale based on country like the treemap
                 .style("stroke", "black")
                 .on("mouseover", function(elem, d){
                     svg.append("text")

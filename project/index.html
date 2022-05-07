@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Speed of Speedrunning</title>
-    <link rel="stylesheet" href="bulma.min.css">
+    <link rel="stylesheet" href="projectAssets/bulma.min.css">
     <!-- https://bulmathemes.com/theme/bulma-pro/ -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
@@ -20,19 +20,23 @@
 <div>
     <div>
     <nav class="navbar is-primary is-fixed-top">
-        <div class="navbar-brand">
-            <div data-target="navbarExampleTransparentExample" class="navbar-burger burger"><span></span> <span></span>
-                <span></span></div>
-        </div>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
-            <div class="navbar-start">
-                <span><a href="../index.html">Go back </a></span></div>
-            <div class="navbar-end"></div>
+            <div class="navbar-brand" style="padding:  15px;">
+                <!-- <span> -->
+                    <a class="button is-light is-rounded" href="../index.html"> Return to main site</a>
+                <!-- </span> -->
+            </div>
+            <div class="navbar-end" style="padding: 15px;">
+                <span><h3 class="title is-3 has-text-white">Speed of Speedrunning</h3></span>
+            </div>
+
+            <!-- <div class="navbar-end"></div> -->
         </div>
     </nav>
     <section class="hero is-primary is-medium">
         <div class="hero-body">
             <div class="container has-text-centered"><br>
+                <img src="projectAssets/star.gif">
                 <h1 class="title is-1">
                     Speed of Speedrunning
                 </h1>
@@ -47,23 +51,60 @@
     </section>
     </div>
     <section class="section">
-        <div id="scatter">
-            <h3>Scatterplot</h3>
-            <script src="linechartsketch.js"></script>
-        </div>
-        <div id="line">
-            <h3>Line Chart</h3>
-            <script src="wrlinechart.js"></script>
+        <h1 class="title is-2">
+            Background
+        </h1>
+        <p> I have been a fan of speedrunning videos and streams for several years. I have watched speedrun content for many different games. I have watched major speedrunning events like Games Done Quick. And I have watched many videos that analyze the history of speedrunning, many from the creator SummoningSalt(highly recommend!). But today I want to explore more about speedrunning and it's history myself, specifically with the most popular "speed game," Super Mario 64. 
+        </p><br>
+        <h1 class="title is-2">
+            But what is Speedrunning?
+        </h1>
+        <p> Speedrunning is the act of completing a video game as quickly as possible. This often includes the use of glitches and exploits to skip major sections or challenges of the game. Most games have multiple categories, with different goals or methods. The most common are "any%," which requires beating the game as quickly as possible, with no restrictions, and "100%," which requires completing every major task in the game as quickly as possible. In the context of Super Mario 64, normal completion of the game requires getting 70 "Power Stars" before you complete the final level. "any%" is done by collecting 0 Power Stars, and is done in about 6 minutes. "100%" is done by collecting all 120 Power Stars, and is done in about an hour and a half. Today, I will explore the "100%" category.
+        </p><br>
+        <div id="tree">
+            <h3 class="subtitle is-4">Where do people play from?</h3>
+            <p> Speedrunning is a global phenomenon. People play from all over the world, from many countries. And here, I will look at where the top 100 speedrunners are from.
+            </p>
+            <script src="treeMapSketch.js"></script>
+            <p> Speedrunning does have a large majority from the USA and Japan, likely because these two countries are the leaders in video game development. But it is interesting to see that there is representation from every major continent.
+            </p><br>
         </div>
         <div id="bar">
-            <h3>Bar Chart</h3>
+            <h3 class="subtitle is-4">How active is the speedrunning community?</h3>
+            <p> Even if a speedrunning community is popular, the commnuity may not be active. Thankfully, <a href="speedrun.com/sm64">speedrun.com</a> keeps a count of how many speedrunners have contributed to the community within the last month, so we can see how popular it is.
+            </p>
             <script src="divergingbarchartsketch.js"></script>
+            <p> This community is still up and running, even in a game that is nearing 30 years of age. 
+            </p><br>
         </div>
-        <div id="tree">
-            <h3>Tree Map</h3>
-            <script src="treeMapSketch.js"></script>
+        <div id="scatter">
+            <h3 class="subtitle is-4">How well are the top 100 speedrunners performing?</h3>
+            <p> Now we can get to the fun part. [Add more here]
+            </p>
+            <script src="linechartsketch.js"></script>
+            <p> [Add more here]
+            </p><br>
+        </div>
+        <div id="line">
+            <h3 class="subtitle is-4">What is the history of World Records?</h3>
+            <p> So, who is the best? And how much has the best improved? People have always wanted to be the fastest, or to know who the fastest was. People have been speedrunning since the 90s, even before people have kept records, and we unfortunately cannot verify them, so they are not included here. 
+            </p>
+            <script src="wrlinechart.js"></script>
+            <p> What I find the most incredible is how they were able to improve by over 30 minutes, and there is still time to improve.
+            </p><br>
         </div>
     </section>
+    <div>
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <br> <strong>Bulma Pro Theme</strong> by<a href="http://mubaidr.github.com" target="_blank"> Muhammad Ubaid Raza</a> 
+                    <br> The source code is licensed under <a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT</a>.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
 </div>
 </body>
 </html>
