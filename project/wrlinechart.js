@@ -13,7 +13,7 @@ function main(){
     let height = 600 - margin;
 
     let svg = d3.select("#line").append("svg")
-        .attr("width", width + margin)
+        .attr("width", width + margin + 50)
         .attr("height", height + margin);
 
     let container_g = svg.append("g")
