@@ -20,6 +20,7 @@ function main() {
     let yScale = d3.scaleTime().range([0, height]);
 
     d3.csv("SM64_120_Star_Speedrun_Time2.csv", function(d){
+        //parses data from csv in order to convert to Date objects
         d.Date = parseDate(d.Date);
         d.Time = parseTime(d.Time);
         return d;
@@ -32,6 +33,7 @@ function main() {
                 .attr("font-family", "sans-serif")
                 .text("WR Time Progression");
 
+            //arbitrary max to fit values
             xScale.domain([d3.min(data.map(function(d){return d.Date})), new Date(2022,5,0)]);
 
 
@@ -39,9 +41,11 @@ function main() {
                 return d.Time;
             })
 
+            //arbitrary min to make values visible
             yScale.domain([d3.max(times), parseTime("1:30:00")]);
 
             const newData = data.map(function(d, i){
+                //i store data this way in order to make interaction easier
                 return {x:xScale(d.Date), y:yScale(times[i]), name:d.Username, time:d3.timeFormat("%H:%M:%S")(times[i])};
             });
 
@@ -74,6 +78,8 @@ function main() {
                         .attr("font-weight", "bold")
                         .attr("fill", "black")
                         .text(d.name + ": " + d.time);
+                    //appends name and time when interacted with
+
                     d3.select(this)
                         .style("fill", "blue")
                         .raise();
@@ -102,6 +108,7 @@ function main() {
                 .call(d3.axisLeft(yScale).tickFormat(function(d) {
                     let axisString = d.toLocaleTimeString();
                     return axisString.substring(0, axisString.length - 3);
+                    //removes excess data from time string
                 }).ticks(10))
                 .append("text")
                 .attr("transform", "rotate(-90)")
@@ -111,7 +118,7 @@ function main() {
                 .attr("stroke", "black")
                 .attr("fill", "black")
                 .attr("font-size", 14)
-                .text("Time(H:MM:SS");
+                .text("Time(H:MM:SS)");
         })
 }
 

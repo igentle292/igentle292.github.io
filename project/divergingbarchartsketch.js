@@ -22,6 +22,7 @@ function main(){
     let positiveyScale = d3.scaleLinear().range([225, 0]);
     let negativeyScale = d3.scaleLinear().range([425, 225]);
     let colorScale = d3.scaleLinear().range(["red","white", "green"]);
+    //negative, zero, and positive scale
 
     d3.csv("active_player_count.csv", converter).then(data => {
         container_g.append("text")
@@ -40,6 +41,7 @@ function main(){
         }));
 
         let absoluteMax = (posMax > negMax) ? posMax : negMax;
+        //get the absolute value max in order to equally scale both positive and negative rectangles
 
         xScale.domain(data.map(function(d) {
             return d.Date;
@@ -59,8 +61,10 @@ function main(){
             .style("height", function(d) {
                 let num = d.Change_in_Players;
                 if(num > 0){
+                    //positive rectangles' height is subtracted from the max
                     return 225 - positiveyScale(d.Change_in_Players);
                 }
+                //negative rectangles' height is subtracted my max
                 return negativeyScale(d.Change_in_Players) - 225;
             })
             .style("fill", function(d){
@@ -73,12 +77,17 @@ function main(){
             .style("y", function(d) {
                 let num = d.Change_in_Players;
                 if(num > 0){
+                    //positives rectangles' y position is the height value, plus the margin
                     return positiveyScale(d.Change_in_Players)+margin;
                 }
+                //negative rectangles' y position is the 0 position plus margin
                 return negativeyScale(0) + margin;
             }).on("mouseover", function(elem, d){
             let y;
             let num = d.Change_in_Players;
+
+            //gets the midpoint between the height and base position depending on negative or positive
+            //probably an easier way to do this
             if(num > 0){
                 y = (positiveyScale(d.Change_in_Players)+margin) + ((225 - positiveyScale(d.Change_in_Players))/2);
             } else {
@@ -107,7 +116,6 @@ function main(){
             .attr("font-family", "sans-serif")
             .call(legend);
 
-        //Code from lecture
         container_g.append("g")
             .attr("transform", "translate(0, 325)")
             .call(d3.axisBottom(xScale).tickSize(0).tickPadding(225))
@@ -119,7 +127,6 @@ function main(){
             .attr("font-size", 14)
             .text("Date");
 
-        // Display the Y-axis
         container_g.append("g")
             .attr("transform", "translate(0, 100)")
             .call(d3.axisLeft(positiveyScale).tickFormat(function(d) {
